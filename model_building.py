@@ -65,9 +65,19 @@ print('RMSE test data:', round((mean_squared_error(y_test, rf_y_test_pred,square
 rid = Ridge(alpha=1.0)
 rid.fit(X_train,y_train)
 
-rid_y_train_pred = rf.predict(X_train)
-rid_y_test_pred = rf.predict(X_test)
+rid_y_train_pred = rid.predict(X_train)
+rid_y_test_pred = rid.predict(X_test)
 
 print('RMSE train data:', round((mean_squared_error(y_train, rid_y_train_pred,squared=False)),2))
 print('RMSE test data:', round((mean_squared_error(y_test, rid_y_test_pred,squared=False)),2))
 
+
+#predict the data test, we'll with random forest as is the best RMSE for the baseline model
+test=pd.read_excel('bike_test.xlsx')
+test=test[['season','yr','mnth','hr','holiday','weekday','workingday','weathersit', 'temp', 'atemp', 'hum', 'windspeed']]
+
+
+rf_y_test_pred = rf.predict(test)
+pred = pd.DataFrame(rf_y_test_pred)
+pred.columns=['pred']
+pred.to_csv('cvillarragamo.csv',index=False)

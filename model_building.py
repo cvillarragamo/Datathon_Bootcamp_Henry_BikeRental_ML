@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 
 training=pd.read_excel('bike_train.xlsx')
 
-# choose relevant columns 
+#choose relevant columns 
 training.columns
 model=training[['season','mnth','hr','weathersit', 'temp', 'atemp', 'hum', 'windspeed','cnt']]
 

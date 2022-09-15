@@ -1,11 +1,12 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split, RandomizedSearchCV
+from sklearn.model_selection import train_test_split
+from sklearn import preprocessing
 from sklearn.model_selection import cross_val_score
+
 import numpy as np
 
 import matplotlib.pyplot as plt
 
-from discover_feature_relationships import discover
 
 #ML baseline models
 
@@ -14,23 +15,24 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import Ridge
 
 
-
 #metrics
 from sklearn.metrics import mean_squared_error
 
+
+### THE FIRST PART OF THIS SCRIPT IS BASE ON 1_model_building. PLEASE GO TO IMPROVING THE MODEL FOR NEW INSIGHTS
 
 #reading data
 training=pd.read_excel('bike_train.xlsx')
 
 #choose relevant columns 
 training.columns
-model=training[['season','yr','mnth','hr','holiday','weekday','workingday','weathersit', 'temp', 'atemp', 'hum', 'windspeed','cnt']]
+model_columns=training[['season','mnth','hr','holiday','weekday','workingday','weathersit', 'temp', 'atemp', 'hum', 'windspeed','cnt']]
 
 #the data came with dummies for all categorical features, and some normalization for continuous variables, so we can go to train the model
 
 # train test split 
-X = model.drop('cnt', axis =1)
-y = model.cnt
+X = model_columns.drop('cnt', axis =1)
+y = model_columns.cnt
 
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -65,6 +67,28 @@ randomf=rmse(rf,X_train, X_test, y_train,y_test)
 rid = Ridge(alpha=0.13)
 ridge=rmse(rid,X_train, X_test, y_train,y_test)
 
+
+#######IMPROVING THE MODEL ###################
+
+scaler = preprocessing.StandardScaler()
+model = RandomForestRegressor(random_state = 42)
+
+scaler.fit(X_train)
+x_scaled = scaler.transform(X_train)
+
+
+
+randomf_scaled=rmse(model,x_scaled, X_test, y_train,y_test)
+
+
+
+
+# scaler = preprocessing.MinMaxScaler().fit(x_train)
+# model = LinearRegression().fit(scaler.transform(x_train), y_train)
+# model.score(scaler.transform(x_val), y_val)
+
+
+# model.predict(scaler.transform(x_test))
 
 
 

@@ -49,9 +49,9 @@ The dataset already had feature engineering work, we got the following:
 ## EDA
 I looked at the distributions of the data and the value counts for the various categorical variables. Below are a few highlights from the pivot tables. 
 
-![alt text](https://github.com/PlayingNumbers/ds_salary_proj/blob/master/salary_by_job_title.PNG "Salary by Position")
-![alt text](https://github.com/PlayingNumbers/ds_salary_proj/blob/master/positions_by_state.png "Job Opportunities by State")
-![alt text](https://github.com/PlayingNumbers/ds_salary_proj/blob/master/correlation_visual.png "Correlations")
+![alt text](https://github.com/cvillarragamo/Datathon-Bike-Rental-ML/blob/main/figures/linear_correlation.png "linear correlation")
+![alt text](https://github.com/cvillarragamo/Datathon-Bike-Rental-ML/blob/main/figures/distributions.png "Distribution")
+![alt text](https://github.com/cvillarragamo/Datathon-Bike-Rental-ML/blob/main/figures/featured.png "Feature binning")
 
 ## Model Building 
 
@@ -65,24 +65,16 @@ I tried three different models:
 *	**Ridge Regressor** – Because it uses parameters that "penalize" flexibility in an attempt to minimize overfitting, so I thought that this would be a good fit. 
 
 ## Feature binning
-After the first-baseline model runned, I needed to adjust some variables to see if it really improved the model. I made the following changes and created the following variables:
+After the first-baseline model runned, I needed to adjust some variables to see if it really improved the model. I create the following variables, each one with 4 bins based on rank of quartiles:
 
-*Parsed numeric data out of salary 
-*Made columns for employer provided salary and hourly 
-*Removed rows without correlation 
-*Parsed rating out of company text 
-*Made a new column for company state 
-*Added a column for if the job was at the company’s headquarters 
-*Transformed founded date into age of company 
-*Made columns for if different skills were listed in the job description:
-
-*Column for simplified job title and Seniority 
-*Column for description length 
+* temp_ 
+* hum_
+* hr_
 
 ## Model performance
 The Random Forest model far outperformed the other approaches on the test and validation sets. 
-*	**Decision Tree** : RMSE = 11.22
-*	**Random Forest**: RMSE = 18.86
-*	**Ridge Regression**: RMSE = 19.67
+The feature binning create a overfitting of the model, so the baseline was a better choice.
+
 
 ## Optimization 
+I run ouyt of time to optimized the model with advanced regressors and cross validation

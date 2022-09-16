@@ -16,7 +16,7 @@ We need to use the Root Mean Square Error (RMSE) as a metric to evaluate our mod
 
 ## Code and Resources Used 
 **Python Version:** 3.10.4  
-**Packages:** pandas, numpy, sklearn, matplotlib, seaborn  
+**Packages:** pandas, numpy, pandas_profiling, sklearn, matplotlib, seaborn  
 **Data science project from scratch:** https://www.youtube.com/playlist?list=PL2zq7klxX5ASFejJj80ob9ZAnBHdz5O1t  
 
 
@@ -59,10 +59,10 @@ First, I transformed the categorical variables into dummy variables. I also spli
 
 I tried three different models and evaluated them using Mean Absolute Error. I chose MAE because it is relatively easy to interpret and outliers aren’t particularly bad in for this type of model.   
 
-I tried three different models for the baseline:
+I tried three different models:
 *	**Decision Tree** – Baseline for the model
 *	**Random Forest** – Because of the sparse data from the many categorical variables, I thought a would be effective.
-*	**Ridge Regressor** – Again, with the sparsity associated with the data, I thought that this would be a good fit. 
+*	**Ridge Regressor** – Because it uses parameters that "penalize" flexibility in an attempt to minimize overfitting, so I thought that this would be a good fit. 
 
 ## Feature binning
 After the first-baseline model runned, I needed to adjust some variables to see if it really improved the model. I made the following changes and created the following variables:

@@ -58,7 +58,6 @@ First, I use the columns as provided since they were encoded and standardized. I
 
 I tried three different models thinking that outliers aren’t particularly bad for this type of model.   
 
-I tried three different models:
 *	**Decision Tree** – Baseline for the model
 *	**Random Forest** – Because of the sparse data from the many categorical variables, I thought a would be effective.
 *	**Ridge Regressor** – Because it uses parameters that "penalize" flexibility in an attempt to minimize overfitting, so I thought that this would be a good fit. 
@@ -78,4 +77,4 @@ The feature binning create a overfitting of the model, so the baseline was a bet
 
 
 ## Optimization 
-I run ouyt of time to optimized the model with advanced regressors and cross validation
+I run out of time to optimized the model with advanced regressors and cross validation

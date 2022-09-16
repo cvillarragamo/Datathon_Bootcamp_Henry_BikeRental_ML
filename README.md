@@ -47,17 +47,16 @@ The dataset already had feature engineering work, we got the following:
 * cnt: count of total rental bikes including both casual and registered
 
 ## EDA
-I looked at the distributions of the data and the value counts for the various categorical variables. Below are a few highlights from the pivot tables. 
+I looked at the distributions of the data and the value counts for the various categorical variables. Below are a few highlights from EDA. 
 
 ![alt text](https://github.com/cvillarragamo/Datathon-Bike-Rental-ML/blob/main/figures/linear_correlation.png "linear correlation")
 ![alt text](https://github.com/cvillarragamo/Datathon-Bike-Rental-ML/blob/main/figures/distributions.png "Distribution")
-![alt text](https://github.com/cvillarragamo/Datathon-Bike-Rental-ML/blob/main/figures/featured.png "Feature binning")
 
 ## Model Building 
 
-First, I transformed the categorical variables into dummy variables. I also split the data into train and tests sets with a test size of 20%.   
+First, I use the columns as provided since they were encoded and standardized. I also split the data into train and tests sets with a test size of 20%.   
 
-I tried three different models and evaluated them using Mean Absolute Error. I chose MAE because it is relatively easy to interpret and outliers aren’t particularly bad in for this type of model.   
+I tried three different models thinking that outliers aren’t particularly bad for this type of model.   
 
 I tried three different models:
 *	**Decision Tree** – Baseline for the model
@@ -70,6 +69,8 @@ After the first-baseline model runned, I needed to adjust some variables to see 
 * temp_ 
 * hum_
 * hr_
+
+![alt text](https://github.com/cvillarragamo/Datathon-Bike-Rental-ML/blob/main/figures/featured.png "Feature binning")
 
 ## Model performance
 The Random Forest model far outperformed the other approaches on the test and validation sets. 
